@@ -1,0 +1,25 @@
+.tv-container {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li {
+    list-style: none;
+    cursor: pointer;
+}
+
+li:hover {
+    font-size: 2rem;
+}
+
+button {
+    padding: 0.5em;
+    border: none;
+    background: rgb(177, 123, 22);
+}
+
+button:hover {
+    background: orange;
+    cursor: pointer;
+}
