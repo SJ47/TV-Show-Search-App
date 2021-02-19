@@ -4,32 +4,209 @@
     box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    /* font-family: "Lato", sans-serif; */
+    font-family: "Rubik", sans-serif;
+}
+
 :root {
-    --primary-color: #ffd230;
-    --secondary-color: #000;
+    /* --primary-color: #ffd230;
+    --secondary-color: #000; */
+    --primary-color: blueviolet;
+    --secondary-color: orange;
+}
+
+#root {
+    width: 90%;
+    margin: 1em auto 1em auto;
+    border: 5px dashed grey;
+    border-radius: 25px;
+}
+.container {
+    display: flex;
+    /* width: 80%; */
+}
+
+.header {
+    padding: 0.3em;
+    text-align: center;
+    width: 100%;
+    /* font-size: 3.5em; */
+    /* background: transparent; */
+    /* background-image: url(../src/images/brush-stroke-banner-6.svg); */
+    background-image: url(../src/images/tv-shows-logo.jpg);
+    /* background-size: 100% 95%; */
+    background-size: contain;
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    /* opacity: 0.5; */
+    margin-top: 0;
+    padding-top: 0.5em;
+    /* border-radius: 25px; */
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.header-text {
+    font-size: 1.5em;
+    padding: 0 1em;
+    color: white;
+    background: blueviolet;
+    border-radius: 25px;
+    margin-top: 0.3em;
+}
+
+form {
+    /* background: orange; */
+    padding-bottom: 1em;
+}
+
+.submit-btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5em 1.5em;
+    margin-left: 1em;
+    /* background: orange; */
+    font-size: 0.55em;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+}
+
+.input-search {
+    /* background: var(--primary-color); */
+    /* color: white; */
+    padding: 0.5em 1.5em 0.5em 1em;
+    /* margin-left: 1em; */
+    font-size: 0.5em;
+    border: 3px dashed grey;
+    border-radius: 25px;
+    outline: none;
 }
 
 .tv-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    margin: 1em;
+}
+
+.left-column {
+    /* background: #ffd230; */
+    /* border: 1px solid grey; */
+    margin-right: 1em;
+}
+
+.right-column {
+    /* background: green; */
+    height: auto;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
 }
 
 li {
     list-style: none;
     cursor: pointer;
-}
-
-li:hover {
-    font-size: 2rem;
-}
-
-button {
     padding: 0.5em;
-    border: none;
-    background: rgb(177, 123, 22);
 }
 
-button:hover {
+img {
+    /* border: 3px solid grey; */
+    /* border: 3px solid blueviolet; */
+    border-radius: 25px;
+}
+
+.card-img {
+    opacity: 0.5;
+}
+
+.card-img:hover {
+    opacity: 1;
+}
+
+.selected-card {
+    text-align: center;
+    border: 1px solid lightgray;
+    border-radius: 25px;
+    padding-bottom: 1em;
+    margin-right: 2em;
+    height: fit-content;
+}
+
+h2 {
+    /* font-size: 2em; */
+    margin: 0em;
+    padding: 0.9em;
+    /* background-color: rgba(18, 118, 240, 0.5); */
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+hr {
+    /* font-size: 3em; */
+    border: 3px solid blueviolet;
+    border: 3px solid orange;
+    border-radius: 50%;
+    margin-bottom: 1em;
+    width: 75%;
+}
+
+.selected-card-title {
     background: orange;
-    cursor: pointer;
+    background: blueviolet;
+    color: white;
+    /* opacity: 1; */
+}
+
+.rating-fav-text-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating-text {
+    padding-left: 1em;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    text-align: left;
+    font-size: 1.5em;
+}
+.favourite-text {
+    padding-right: 0.8em;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    text-align: left;
+    font-size: 1.5em;
+}
+
+.rating-fav-circle-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating {
+    background: blueviolet;
+    color: white;
+    padding: 1em;
+
+    border-radius: 50%;
+    font-size: 1.2em;
+    margin: 1em;
+    margin-left: 1.5em;
+    width: 64px;
+}
+
+.favourite {
+    background: blueviolet;
+    color: white;
+    padding: 1em;
+    border-radius: 50%;
+    font-size: 1.2em;
+    margin: 1em;
+    margin-right: 1.5em;
+    width: 64px;
 }

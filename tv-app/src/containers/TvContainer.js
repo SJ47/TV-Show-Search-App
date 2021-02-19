@@ -39,20 +39,23 @@ const TvContainer = () => {
 
     return (
         <>
-            <h1>TV Show App</h1>
+            <div className="container">
+                <h1 className="header"><span className="header-text">TV Show Search</span>
+                    <hr />
+                    <form onSubmit={handleShowSubmit}>
+                        {/* Commented line below would search as the user types.  Nice, but a lot of API fetch calls in the process */}
+                        {/* <input onChange={event => setSearchShow(event.target.value)} type="text" placeholder="Search for show" /> */}
+                        <input className="input-search" onChange={event => handleBuildSearch(event)} type="text" placeholder="Search for TV show" />
+                        <input className="submit-btn" type="submit" value="Search" />
 
-            <form onSubmit={handleShowSubmit}>
-                {/* Commented line below would search as the user types.  Nice, but a lot of API fetch calls in the process */}
-                {/* <input onChange={event => setSearchShow(event.target.value)} type="text" placeholder="Search for show" /> */}
-                <input onChange={event => handleBuildSearch(event)} type="text" placeholder="Search for show" />
-                <input type="submit" value="Search" />
-
-            </form>
-
-            <div className="tv-container">
+                    </form>
+                </h1>
+            </div>
+            <div className="tv-container ">
                 <ShowsList shows={shows} onSelectedShow={handleSelectedShow} />
                 <ShowDetails selectedShow={selectedShow} />
             </div>
+
         </>
     )
 }
