@@ -9,6 +9,8 @@ const ShowsList = ({ shows, onSelectedShow }) => {
             </li>
         )
     })
+
+
     return (
         <>
             <ul>{showNames}</ul>
