@@ -18,12 +18,6 @@ body {
     --secondary-color: orange;
 }
 
-#root {
-    /* width: 90%; */
-    /* margin: 1em auto 1em auto; */
-    /* border: 5px dashed grey; */
-    /* border-radius: 25px; */
-}
 .container {
     display: flex;
     /* width: 80%; */
@@ -93,7 +87,7 @@ form {
 
 .tv-container {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 3fr 400px;
     grid-template-rows: 1fr auto;
     gap: 1em;
     margin: 1em;
@@ -150,6 +144,8 @@ form {
 }
 
 .right-column {
+    /* position: sticky;
+    top: 1em; */
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
@@ -172,12 +168,6 @@ li {
     list-style: none;
     cursor: pointer;
     padding: 0.5em;
-}
-
-img {
-    /* border: 3px solid grey;
-    */ /* border: 3px solid blueviolet; */
-    /* border-radius: 25px; */
 }
 
 .card-img {
