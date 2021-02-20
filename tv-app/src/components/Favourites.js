@@ -8,7 +8,7 @@ const Favourites = ({ favouriteShows, onFavImageClicked }) => {
 
     return (
         <>
-            <h2>Favourite Shows</h2>
+            <h2 className="favouriteShowsTitle">Favourite Shows</h2>
             <hr />
             <div className="favContainer">
                 {favouriteShowsImages}

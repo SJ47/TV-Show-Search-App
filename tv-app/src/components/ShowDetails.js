@@ -20,34 +20,60 @@ const ShowDetails = ({ selectedShow, onFavouriteClick }) => {
     }
 
     // Check if show is a fav - if yes, then change Symbol from + to - for the add to favourite icon
-    let favStatus;
-    if (selectedShow.show.favourite) {
-        favStatus = "del"
-    } else {
-        favStatus = "+"
-    }
+    // let favStatus;
+    // if (selectedShow.show.favourite) {
+    //     favStatus = "del"
+    // } else {
+    //     favStatus = "+"
+    // }
 
 
     return (
+
+
         <div className="right-column">
-            <div className="selected-card">
-                <h2 className="selected-card-title">{selectedShow.show.name}</h2>
-                <hr />
-                <img src={selectedShow.show.image.medium} alt="" height="250px" />
-                <div className="rating-fav-text-container">
-                    <h4 className="rating-text">Rating</h4>
-                    <h4 className="favourite-text">Favourite</h4>
+            <h2 className="selected-card-title">{selectedShow.show.name}</h2>
+            <hr />
 
-                </div>
-                <div className="rating-fav-circle-container">
-                    <p className="rating">{selectedShow.show.rating.average}</p>
-                    <p className="favourite" onClick={() => { onFavouriteClick(selectedShow) }}  >{favStatus}</p>
+            <img src={selectedShow.show.image.medium} alt="" height="250px" className="selected-img" />
 
-                    {/* <li onClick={() => { onSelectedShow(show) }} key={show.show.id}></li> */}
-                    {/* <p>Network: {selectedShow.show.network.name}</p> */}
-                </div>
+            <div className="rating-fav-text-container">
+                <h4 className="rating-text">Rating</h4>
+                <h4 className="favourite-text">Favourite</h4>
             </div>
+            <div className="rating-fav-circle-container">
+                <p className="rating">{selectedShow.show.rating.average}</p>
+
+                {selectedShow.show.favourite ?
+                    (<i className="fas fa-minus-circle" onClick={() => { onFavouriteClick(selectedShow) }}  ></i>) :
+                    (<i className="fas fa-plus-circle" onClick={() => { onFavouriteClick(selectedShow) }}  ></i>)
+                }
+            </div>
+
         </div>
+
+        // <div className="right-column">
+        //     <div className="flip-card selected-card">
+        //         <h2 className="selected-card-title">{selectedShow.show.name}</h2>
+        //         <hr />
+        //         <div className="flip-card-inner rating-fav-text-container">
+        //             <img src={selectedShow.show.image.medium} alt="" height="250px" />
+        //             {/* <div className="rating-fav-text-container"> */}
+        //             <h4 className="rating-text">Rating</h4>
+        //             <h4 className="favourite-text">Favourite</h4>
+        //             {/* </div> */}
+        //             {/* <div className="rating-fav-circle-container"> */}
+        //             <p className="rating">{selectedShow.show.rating.average}</p>
+        //             <p className="favourite" onClick={() => { onFavouriteClick(selectedShow) }}  >{favStatus}</p>
+        //             {/* </div> */}
+        //         </div>
+        //         <div className="flip-card-back">
+        //             <h1>John Doe</h1>
+        //             <p>Architect - Engineer</p>
+        //             <p>We love that guy</p>
+        //         </div>
+        //     </div>
+        // </div>
     )
 }
 

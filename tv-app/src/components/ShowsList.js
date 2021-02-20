@@ -27,19 +27,24 @@ const ShowsList = ({ shows, onSelectedShow }) => {
 
 
             <li onClick={() => { onSelectedShow(show) }} key={show.show.id}>
-                <img className="card-img" src={show.show.image.medium} width="150" height="200px">
+                <img className="card-img" src={show.show.image.medium} width="150" height="200px" alt="">
                 </img>
             </li >
         )
     })
 
+    let mess = "";
+    if (showNames.length === 0) {
+        mess = "No results found"
+    }
 
     return (
         <>
             <div className="left-column">
                 <h2 className="search-results-header">Search Results</h2>
                 <hr />
-                <ul>{showNames}</ul>
+                <ul>{showNames}{mess}</ul>
+
             </div>
         </>
     )

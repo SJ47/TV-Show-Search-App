@@ -83,7 +83,7 @@ const TvContainer = () => {
                     <form onSubmit={handleShowSubmit}>
                         {/* Commented line below would search as the user types.  Nice, but a lot of API fetch calls in the process */}
                         {/* <input onChange={event => setSearchShow(event.target.value)} type="text" placeholder="Search for show" /> */}
-                        <input className="input-search" onChange={event => handleBuildSearch(event)} type="text" placeholder="Search for TV show" />
+                        <input className="input-search" onChange={event => handleBuildSearch(event)} type="text" placeholder="Search for TV show" autofocus="autofocus" />
                         <input className="submit-btn" type="submit" value="Search" />
 
                     </form>
@@ -98,7 +98,6 @@ const TvContainer = () => {
                 <ShowDetails selectedShow={selectedShow} onFavouriteClick={handleFavouriteClick} />
 
             </div>
-
         </>
     )
 }
