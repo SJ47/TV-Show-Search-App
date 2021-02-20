@@ -19,6 +19,14 @@ const ShowDetails = ({ selectedShow, onFavouriteClick }) => {
         selectedShow.show.rating.average = "na"
     }
 
+    // Check if show is a fav - if yes, then change Symbol from + to - for the add to favourite icon
+    let favStatus;
+    if (selectedShow.show.favourite) {
+        favStatus = "del"
+    } else {
+        favStatus = "+"
+    }
+
 
     return (
         <div className="right-column">
@@ -33,7 +41,7 @@ const ShowDetails = ({ selectedShow, onFavouriteClick }) => {
                 </div>
                 <div className="rating-fav-circle-container">
                     <p className="rating">{selectedShow.show.rating.average}</p>
-                    <p className="favourite" onClick={() => { onFavouriteClick(selectedShow) }}  >+</p>
+                    <p className="favourite" onClick={() => { onFavouriteClick(selectedShow) }}  >{favStatus}</p>
 
                     {/* <li onClick={() => { onSelectedShow(show) }} key={show.show.id}></li> */}
                     {/* <p>Network: {selectedShow.show.network.name}</p> */}

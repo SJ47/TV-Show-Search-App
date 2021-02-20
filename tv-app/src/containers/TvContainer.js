@@ -40,9 +40,14 @@ const TvContainer = () => {
 
         // NOTE: includes() method does not fully work for this example - it will add in a duplicate if you re-search and add fav
         // So using some() method instead to check the id does not already exist
-        if (!favouriteShows.some(favouriteShow => favouriteShow.show.id == favShow.show.id)) {
+        if (!favouriteShows.some(favouriteShow => favouriteShow.show.id === favShow.show.id)) {
+            // Add a favourite tag to the show object
+            favShow.show.favourite = true;
+
             const newFavShowList = [...favouriteShows, favShow]
             setFavouriteShows(newFavShowList);
+        } else {
+            handleDeleteFavouriteShow(favShow);
         }
     }
 
@@ -51,13 +56,17 @@ const TvContainer = () => {
         // Update the showDetail card with the favourite clicked
         handleSelectedShow(favShowClicked);
 
-        const newFavShowList = favouriteShows.filter((favShow) => {
-            return favShow !== favShowClicked
+    }
+
+    // Handle delete favourite show
+    const handleDeleteFavouriteShow = (favShow) => {
+        const newFavShowList = favouriteShows.filter((show) => {
+            return show !== favShow
         })
 
         // Update the favouriteShows state with the new array (with the item clicked removed)
+        favShow.show.favourite = false
         setFavouriteShows(newFavShowList)
-
     }
 
 

@@ -110,7 +110,7 @@ form {
 }
 
 .fav-image:hover {
-    border: 3px solid red;
+    border: 3px solid blueviolet;
 }
 
 .left-column {
@@ -146,7 +146,7 @@ li {
 img {
     /* border: 3px solid grey; */
     /* border: 3px solid blueviolet; */
-    border-radius: 25px;
+    /* border-radius: 25px; */
 }
 
 .card-img {
