@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import ShowsList from "../components/ShowsList"
-import ShowDetails from "../components/ShowDetails"
+import React, { useEffect, useState } from 'react';
+import ShowsList from "../components/ShowsList";
+import ShowDetails from "../components/ShowDetails";
+import Favourites from '../components/Favourites';
 
 const TvContainer = () => {
 
     const [shows, setShows] = useState([]);
     const [selectedShow, setSelectedShow] = useState(null);
-    const [searchShow, setSearchShow] = useState("")
-    const [buildSearch, setBuildSearch] = useState("")
+    const [searchShow, setSearchShow] = useState("");
+    const [buildSearch, setBuildSearch] = useState("");
+    const [favouriteShows, setFavouriteShows] = useState([]);
 
     const getShows = () => {
         fetch(`http://api.tvmaze.com/search/shows?q=${searchShow}`)
@@ -23,16 +25,43 @@ const TvContainer = () => {
     const handleBuildSearch = (event) => {
         event.preventDefault();
         setBuildSearch(event.target.value)
-        console.log("handleShowInput triggered", buildSearch);
+        // console.log("handleShowInput triggered", buildSearch);
     }
 
     // When submit search button is clicked, then request a new fetch of API data
     const handleShowSubmit = (event) => {
         event.preventDefault();
-        console.log("handleShowSubmit triggered", buildSearch);
+        // console.log("handleShowSubmit triggered", buildSearch);
         setSearchShow(buildSearch)
     }
 
+    // Handle the add fav show to array of fav shows after favourite clicked and if not already a favourite
+    const handleFavouriteClick = (favShow) => {
+
+        // NOTE: includes() method does not fully work for this example - it will add in a duplicate if you re-search and add fav
+        // So using some() method instead to check the id does not already exist
+        if (!favouriteShows.some(favouriteShow => favouriteShow.show.id == favShow.show.id)) {
+            const newFavShowList = [...favouriteShows, favShow]
+            setFavouriteShows(newFavShowList);
+        }
+    }
+
+    // Handle what to do when the fav image in the favourite list is clicked 
+    const handleFavImageClicked = (favShowClicked) => {
+        // Update the showDetail card with the favourite clicked
+        handleSelectedShow(favShowClicked);
+
+        const newFavShowList = favouriteShows.filter((favShow) => {
+            return favShow !== favShowClicked
+        })
+
+        // Update the favouriteShows state with the new array (with the item clicked removed)
+        setFavouriteShows(newFavShowList)
+
+    }
+
+
+    // useEffect setup
     useEffect(() => {
         getShows();
     }, [searchShow]);
@@ -52,8 +81,13 @@ const TvContainer = () => {
                 </h1>
             </div>
             <div className="tv-container ">
+                <div className="favouritesContainer">
+                    <Favourites favouriteShows={favouriteShows} onFavImageClicked={handleFavImageClicked} />
+                </div>
+
                 <ShowsList shows={shows} onSelectedShow={handleSelectedShow} />
-                <ShowDetails selectedShow={selectedShow} />
+                <ShowDetails selectedShow={selectedShow} onFavouriteClick={handleFavouriteClick} />
+
             </div>
 
         </>

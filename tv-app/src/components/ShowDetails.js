@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ShowDetails = ({ selectedShow }) => {
+const ShowDetails = ({ selectedShow, onFavouriteClick }) => {
 
     if (!selectedShow) {
         return (null)
@@ -33,7 +33,9 @@ const ShowDetails = ({ selectedShow }) => {
                 </div>
                 <div className="rating-fav-circle-container">
                     <p className="rating">{selectedShow.show.rating.average}</p>
-                    <p className="favourite">+</p>
+                    <p className="favourite" onClick={() => { onFavouriteClick(selectedShow) }}  >+</p>
+
+                    {/* <li onClick={() => { onSelectedShow(show) }} key={show.show.id}></li> */}
                     {/* <p>Network: {selectedShow.show.network.name}</p> */}
                 </div>
             </div>

@@ -37,6 +37,8 @@ const ShowsList = ({ shows, onSelectedShow }) => {
     return (
         <>
             <div className="left-column">
+                <h2 className="search-results-header">Search Results</h2>
+                <hr />
                 <ul>{showNames}</ul>
             </div>
         </>
