@@ -1,7 +1,9 @@
 import React from 'react'
 
+// This component will render the view of a list of shows matching a search string input by the user
 const ShowsList = ({ shows, onSelectedShow }) => {
 
+    // Iterate through all the shows returned and render out the html with a clickable image for each show listed
     const showNames = shows.map((show) => {
         // If show object or show image do not exist, just return null
         if (!show || !show.show.image) {
@@ -35,6 +37,7 @@ const ShowsList = ({ shows, onSelectedShow }) => {
         mess = "No results found"
     }
 
+    // Render the views
     return (
         <>
             <div className="left-column">

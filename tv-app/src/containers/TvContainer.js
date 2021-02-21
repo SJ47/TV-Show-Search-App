@@ -3,6 +3,8 @@ import ShowsList from "../components/ShowsList";
 import ShowDetails from "../components/ShowDetails";
 import Favourites from '../components/Favourites';
 
+
+// This parent container holds the state and logic for the app
 const TvContainer = () => {
 
     const [shows, setShows] = useState([]);
@@ -11,21 +13,23 @@ const TvContainer = () => {
     const [buildSearch, setBuildSearch] = useState("");
     const [favouriteShows, setFavouriteShows] = useState([]);
 
+    // Fetch shows and store as an array of shows inside component state
     const getShows = () => {
         fetch(`http://api.tvmaze.com/search/shows?q=${searchShow}`)
             .then(res => res.json())
             .then(data => setShows(data))
     }
 
+    // Update state with a single show object that was selected
     const handleSelectedShow = (show) => {
         // Check if show is a favourite and if it is use that instead of the selected object 
         // to allow deleting from fav list regardless of whether selection is from fav list or search results list
-
         const tempShow = favouriteShows.find(favouriteShow => favouriteShow.show.id === show.show.id)
         if (tempShow) {
             show = tempShow
         }
 
+        // Update the state with the selected show
         setSelectedShow(show)
     }
 
@@ -33,35 +37,40 @@ const TvContainer = () => {
     const handleBuildSearch = (event) => {
         event.preventDefault();
         setBuildSearch(event.target.value)
-        // console.log("handleShowInput triggered", buildSearch);
     }
 
-    // When submit search button is clicked, then request a new fetch of API data
+    // When submit search button is clicked, then request a new fetch of API data 
+    // using the data the user has entered in to the input search box
     const handleShowSubmit = (event) => {
         event.preventDefault();
-        // console.log("handleShowSubmit triggered", buildSearch);
         setSearchShow(buildSearch)
     }
 
     // Handle the add fav show to array of fav shows after favourite clicked and if not already a favourite
     const handleFavouriteClick = (favShow) => {
 
-        // NOTE: includes() method does not fully work for this example - it will add in a duplicate if you re-search and add fav
+        // NOTE: includes() method did not fully work for this example - it will add in a duplicate if you re-search and add fav
         // So using some() method instead to check the id does not already exist
         if (!favouriteShows.some(favouriteShow => favouriteShow.show.id === favShow.show.id)) {
-            // Add a favourite tag to the show object
-            favShow.show.favourite = true;
 
+            // If this is a new favourite show then
+            // - Add a favourite tag to the show object
+            // - Copy the current state of fav shows and add the new fav show
+            favShow.show.favourite = true;
             const newFavShowList = [...favouriteShows, favShow]
             setFavouriteShows(newFavShowList);
         } else {
+            // If not a new fav show
+            // - it must already be a fav show
+            // - therefore user is clicking to delete from fav shows
             handleDeleteFavouriteShow(favShow);
         }
     }
 
-    // Handle what to do when the fav image in the favourite list is clicked 
+    // Handle what to do when the fav show in the favourite list is clicked 
+    // Update the showDetail card with the favourite clicked
+    // in the same manner as clicking on a show from the results list
     const handleFavImageClicked = (favShowClicked) => {
-        // Update the showDetail card with the favourite clicked
         handleSelectedShow(favShowClicked);
 
     }
@@ -78,11 +87,13 @@ const TvContainer = () => {
     }
 
 
-    // useEffect setup
+    // useEffect setup to run a fresh API fetch when a new searchShow has been submitted by user
     useEffect(() => {
         getShows();
     }, [searchShow]);
 
+
+    // Render the views
     return (
         <>
             <div className="container">
