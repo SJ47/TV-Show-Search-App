@@ -30,7 +30,6 @@ const ShowDetails = ({ selectedShow, onFavouriteClick }) => {
 
     return (
 
-
         <div className="right-column">
             <h2 className="selected-card-title">{selectedShow.show.name}</h2>
             <hr />
@@ -49,6 +48,13 @@ const ShowDetails = ({ selectedShow, onFavouriteClick }) => {
                     (<i className="fas fa-plus-circle" onClick={() => { onFavouriteClick(selectedShow) }}  ></i>)
                 }
             </div>
+
+            <h2 className="summary-text-title">Summary</h2>
+            <hr />
+            <div
+                dangerouslySetInnerHTML={{
+                    __html: selectedShow.show.summary
+                }} className="summary-text"></div>
 
         </div>
 
