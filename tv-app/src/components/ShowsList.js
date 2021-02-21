@@ -3,11 +3,12 @@ import React from 'react'
 const ShowsList = ({ shows, onSelectedShow }) => {
 
     const showNames = shows.map((show) => {
+        // If show object or show image do not exist, just return null
         if (!show || !show.show.image) {
             return (null)
         }
 
-        // Replace any null data with a placeholder so as not to error out
+        // Replace any other null data with a placeholder so as not to error out
         // if (!show.show.image) {
         //     show.show.image = { medium: "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" }
         // }
@@ -21,11 +22,6 @@ const ShowsList = ({ shows, onSelectedShow }) => {
         }
 
         return (
-            // <li onClick={() => { onSelectedShow(show) }} key={show.show.id}>
-            //     {show.show.name}
-            // </li>
-
-
             <li onClick={() => { onSelectedShow(show) }} key={show.show.id}>
                 <img className="card-img" src={show.show.image.medium} width="150" height="200px" alt="">
                 </img>
@@ -33,6 +29,7 @@ const ShowsList = ({ shows, onSelectedShow }) => {
         )
     })
 
+    // If no results are found, just display a no results found message
     let mess = "";
     if (showNames.length === 0) {
         mess = "No results found"

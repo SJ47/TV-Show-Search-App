@@ -18,6 +18,14 @@ const TvContainer = () => {
     }
 
     const handleSelectedShow = (show) => {
+        // Check if show is a favourite and if it is use that instead of the selected object 
+        // to allow deleting from fav list regardless of whether selection is from fav list or search results list
+
+        const tempShow = favouriteShows.find(favouriteShow => favouriteShow.show.id === show.show.id)
+        if (tempShow) {
+            show = tempShow
+        }
+
         setSelectedShow(show)
     }
 
@@ -83,7 +91,7 @@ const TvContainer = () => {
                     <form onSubmit={handleShowSubmit}>
                         {/* Commented line below would search as the user types.  Nice, but a lot of API fetch calls in the process */}
                         {/* <input onChange={event => setSearchShow(event.target.value)} type="text" placeholder="Search for show" /> */}
-                        <input className="input-search" onChange={event => handleBuildSearch(event)} type="text" placeholder="Search for TV show" autofocus="autofocus onfocus=" />
+                        <input className="input-search" onChange={event => handleBuildSearch(event)} type="text" placeholder="Search for TV show" autoFocus="autofocus onfocus=" />
                         <input className="submit-btn" type="submit" value="Search" />
                     </form>
                 </h1>
