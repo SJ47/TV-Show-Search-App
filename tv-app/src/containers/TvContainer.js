@@ -15,7 +15,7 @@ const TvContainer = () => {
 
     // Fetch shows and store as an array of shows inside component state
     const getShows = () => {
-        fetch(`http://api.tvmaze.com/search/shows?q=${searchShow}`)
+        fetch(`https://api.tvmaze.com/search/shows?q=${searchShow}`)
             .then(res => res.json())
             .then(data => setShows(data))
     }
