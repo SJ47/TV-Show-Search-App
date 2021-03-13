@@ -1,4 +1,4 @@
-# codeclan_week7_weekend_homework
+# TV Show Search App
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/76ce6f6a-87ac-41a2-9408-a7897c737740/deploy-status)](https://app.netlify.com/sites/nervous-lichterman-f99f35/deploys)
 
