@@ -1,10 +1,32 @@
-name: 'Netlify Preview Deploy'
+name: 'Build, Test and Preview Deploy'
 run-name: ${{ github.actor }} is Deploying a Preview on Netlify
+
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
-    types: ['opened', 'edited', 'synchronize']
+    branches: [ "main" ]
+
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
+
   deploy:
+    needs: build
     name: 'Deploy'
     runs-on: ubuntu-latest
     steps:
