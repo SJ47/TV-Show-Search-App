@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TvContainer should render styles correctly 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <h1
+      class="header"
+    >
+      <span
+        class="header-text"
+      >
+        TV Show Search
+      </span>
+      <hr />
+      <form>
+        <input
+          class="input-search"
+          placeholder="Search for TV show"
+          type="text"
+        />
+        <input
+          class="submit-btn"
+          type="submit"
+          value="Search"
+        />
+      </form>
+    </h1>
+  </div>
+  <div
+    class="tv-container "
+  >
+    <div
+      class="favouritesContainer"
+    >
+      <h2
+        class="favouriteShowsTitle"
+      >
+        Favourite Shows
+      </h2>
+      <hr />
+      <div
+        class="favContainer"
+      />
+    </div>
+    <div
+      class="left-column"
+    >
+      <h2
+        class="search-results-header"
+      >
+        Search Results
+      </h2>
+      <hr />
+      <ul>
+        No results found
+      </ul>
+    </div>
+  </div>
+</div>
+`;

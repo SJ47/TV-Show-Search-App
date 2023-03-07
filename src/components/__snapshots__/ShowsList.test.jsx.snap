@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShowsList should render styles correctly 1`] = `
+<div>
+  <div
+    class="left-column"
+  >
+    <h2
+      class="search-results-header"
+    >
+      Search Results
+    </h2>
+    <hr />
+    <ul>
+      <li>
+        <img
+          alt=""
+          class="card-img"
+          height="200px"
+          src="https://static.tvmaze.com/uploads/images/medium_portrait/423/1058261.jpg"
+          width="150"
+        />
+      </li>
+      
+    </ul>
+  </div>
+</div>
+`;
