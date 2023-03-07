@@ -14,11 +14,11 @@ const TvContainer = () => {
     const [favouriteShows, setFavouriteShows] = useState([]);
 
     // Fetch shows and store as an array of shows inside component state
-    const getShows = () => {
-        fetch(`https://api.tvmaze.com/search/shows?q=${searchShow}`)
-            .then(res => res.json())
-            .then(data => setShows(data))
-    }
+    // const getShows = () => {
+    //     fetch(`https://api.tvmaze.com/search/shows?q=${searchShow}`)
+    //         .then(res => res.json())
+    //         .then(data => setShows(data))
+    // }
 
     // Update state with a single show object that was selected
     const handleSelectedShow = (show) => {
@@ -89,7 +89,10 @@ const TvContainer = () => {
 
     // useEffect setup to run a fresh API fetch when a new searchShow has been submitted by user
     useEffect(() => {
-        getShows();
+        // getShows();
+        fetch(`https://api.tvmaze.com/search/shows?q=${searchShow}`)
+        .then(res => res.json())
+        .then(data => setShows(data))
     }, [searchShow]);
 
 
