@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Favourites should render styles correctly 1`] = `
+<div>
+  <h2
+    class="favouriteShowsTitle"
+  >
+    Favourite Shows
+  </h2>
+  <hr />
+  <div
+    class="favContainer"
+  />
+</div>
+`;
