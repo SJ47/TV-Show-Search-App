@@ -7,7 +7,8 @@ const favouriteShows = []
 describe('Favourites', () => {
   it('should render styles correctly', () => {
     const { container } = render(
-        <Favourites favouriteShows={favouriteShows} onFavImageClicked={mockOnFavImageClicked}/>
+        // <Favourites favouriteShows={favouriteShows} onFavImageClicked={mockOnFavImageClicked}/>
+        <Favourites />
     );
     expect(container).toMatchSnapshot();
   });
